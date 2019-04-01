@@ -7,8 +7,9 @@
 
     <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1" />    <meta name="msapplication-tap-highlight" content="no">
 
-    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+
     <link rel="stylesheet" type="text/css" href="../css/index.css">
+    <link rel="stylesheet" type="text/css" href="../css/baraja.css" />
 
 
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-PDle/QlgIONtM1aqA2Qemk5gPOE7wFq8+Em+G/hmo5Iq0CCmYZLv3fVRDJ4MMwEA" crossorigin="anonymous">
@@ -19,11 +20,60 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/js/bootstrap.min.js" integrity="sha384-7aThvCh9TypR7fIc2HV4O/nFMVCBwyIUKL8XCtKE+8xgCgl/PQGuFsvShjr74PBp" crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../css/outlineGame.css">
+    <script type="text/javascript" src="../js/modernizr.custom.79639.js"></script>
 
+
+    <style>
+        img {
+            width: 80px;
+            height: 112px;
+        }
+        div.card_container{
+            width:200px;
+            height: 70px;
+        }
+    </style>
 </head>
 <body>
-<div id="divPlayer1"></div>
+
+<main class="container">
+    <div >
+        <ul id="player_1_card" class="baraja-container">
+            <li><img src="../img/cards/1.png"/></li>
+            <li><img src="../img/cards/2.png"/></li>
+            <li><img src="../img/cards/3.png"/></li>
+            <li><img src="../img/cards/4.png"/></li>
+            <li><img src="../img/cards/5.png"/></li>
+            <li><img src="../img/cards/6.png"/></li>
+            <li><img src="../img/cards/7.png"/></li>
+            <li><img src="../img/cards/8.png"/></li>
+            <li><img src="../img/cards/9.png"/></li>
+            <li><img src="../img/cards/10.png"/></li>
+            <li><img src="../img/cards/11.png"/></li>
+            <li><img src="../img/cards/12.png"/></li>
+            <li><img src="../img/cards/13.png"/></li>
+        </ul>
+    </div>
+    <div class="card_container">
+        <img src="../img/cards/1.png"/>
+        <img src="../img/cards/2.png"/>
+        <img src="../img/cards/3.png"/>
+        <img src="../img/cards/4.png"/>
+        <img src="../img/cards/5.png"/>
+        <img src="../img/cards/6.png"/>
+        <img src="../img/cards/7.png"/>
+    </div>
+
+
+</main>
+
+
+<script type="text/javascript" src="../js/jquery.baraja.js"></script>
+
+
 <script>
+
 
 
     var jqmReady =$.Deferred();
@@ -32,10 +82,13 @@
     window.addEventListener("deviceReady",cordovaReady.resolve);
     $.when(jqmReady,cordovaReady).then(initApp);
     function initApp(){
-
+        var $img = $("img");
+        $img.attr("height","70");
+        $img.attr("width","50");
 
         //initPlayers(cards());
     };
+
 
     //if these two are comented out
     var players = initPlayers(cards());
@@ -43,11 +96,22 @@
 
     var playerNumber= 1;
 
+    $(window).on("load",function () {
 
+        $el.on("click",function(){
+            vae.fan();
+            console.log("clicked");
+        })
+
+    });
+    $(function () {
+        var $el =$("#player_1_card");
+        var vae = $el.baraja();
+    });
     var gameObj = {
         //deck is 52 card object
-        players:initPlayers(cards()),
-        initGame:game(this.players),
+        //players:initPlayers(cards()),
+        initGame:game(players),
         gameRule1:function (score) {
             while (score < 31){
                 this.noWinner = true;

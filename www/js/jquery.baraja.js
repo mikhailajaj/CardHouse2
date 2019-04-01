@@ -1,28 +1,28 @@
+
 /**
  * jquery.baraja.js v1.0.0
  * http://www.codrops.com
  *
  * Licensed under the MIT license.
  * http://www.opensource.org/licenses/mit-license.php
- * 
+ *
  * Copyright 2012, Codrops
  * http://www.codrops.com
  */
-
-jQuery.fn.reverse = [].reverse;
-
 ;( function( $, window, undefined ) {
-	
+
 	'use strict';
 
 	// global
 	var Modernizr = window.Modernizr;
 
+	jQuery.fn.reverse = [].reverse;
+
 	$.Baraja = function( options, element ) {
-		
+
 		this.$el = $( element );
 		this._init( options );
-		
+
 	};
 
 	// the options
@@ -40,7 +40,7 @@ jQuery.fn.reverse = [].reverse;
 	$.Baraja.prototype = {
 
 		_init : function( options ) {
-			
+
 			// options
 			this.options = $.extend( true, {}, $.Baraja.defaults, options );
 
@@ -123,7 +123,7 @@ jQuery.fn.reverse = [].reverse;
 			if( settings.scatter == undefined ) {
 				settings.scatter = this.fanSettings.scatter
 			}
-			
+
 			this.direction = settings.direction;
 
 			return settings;
@@ -146,14 +146,14 @@ jQuery.fn.reverse = [].reverse;
 			var currZIndex = Number( $el.css( 'z-index' ) ),
 				newZIndex = dir === 'next' ? this.itemZIndexMin - 1 : this.itemZIndexMin + this.itemsCount,
 				extra = dir === 'next' ? '+=1' : '-=1';
-			
+
 			$el.css( 'z-index', newZIndex );
 
 			this.$items.filter( function() {
 
 				var zIdx = Number( $( this ).css( 'z-index' ) ),
 					cond = dir === 'next' ? zIdx < currZIndex : zIdx > currZIndex
-				
+
 				return cond;
 
 			} ).css( 'z-index', extra );
@@ -185,7 +185,6 @@ jQuery.fn.reverse = [].reverse;
 
 			}
 
-			/*
 			this.$el.on( 'click.baraja', 'li', function() {
 
 				if( !self.isAnimating ) {
@@ -195,19 +194,6 @@ jQuery.fn.reverse = [].reverse;
 				}
 
 			} );
-			*/
-			/*
-			this.$el.on( 'dblclick.baraja', 'li', function() {
-				if( self.closed){
-					self._fan();
-					self.closed = false;
-
-				}else{
-					self._closeItems();
-					self.closed = true;
-				}
-			});
-			*/
 
 		},
 		_resetTransition : function( $el ) {
@@ -245,7 +231,7 @@ jQuery.fn.reverse = [].reverse;
 			}
 
 			var styleCSS = '';
-			
+
 			prop === 'transform' ?
 				styleCSS = {
 					'-webkit-transition' : '-webkit-transform ' + speed + 'ms ' + easing + ' ' + delay + 'ms',
@@ -289,7 +275,7 @@ jQuery.fn.reverse = [].reverse;
 				if( fncomplete ) {
 
 					fncomplete.call();
-					
+
 				}
 
 			}
@@ -299,17 +285,17 @@ jQuery.fn.reverse = [].reverse;
 
 			this.closed = false;
 
-			var self = this, 
+			var self = this,
 				extra = 15,
 				cond = dir === 'next' ? self.itemZIndexMin + self.itemsCount - 1 : self.itemZIndexMin,
 				$item = this.$items.filter( function() {
-					
+
 					return Number( $( this ).css( 'z-index' ) ) === cond;
 
 				} ),
 				translation = dir === 'next' ? $item.outerWidth( true ) + extra : $item.outerWidth( true ) * -1 - extra,
 				rotation = dir === 'next' ? 5 : 5 * -1;
-				
+
 			this._setTransition( $item, 'transform', this.options.speed, this.options.easing );
 
 			this._applyTransition( $item, { transform : 'translate(' + translation + 'px) rotate(' + rotation + 'deg)' }, function() {
@@ -318,7 +304,7 @@ jQuery.fn.reverse = [].reverse;
 				self._updateStack( $item, dir );
 
 				self._applyTransition( $item, { transform : 'translate(0px) rotate(0deg)' }, function() {
-					
+
 					$item.off( self.transEndEventName );
 					self.isAnimating = false;
 					self.closed = true;
@@ -332,7 +318,6 @@ jQuery.fn.reverse = [].reverse;
 
 			this.isAnimating = true;
 
-			console.log("here from the _move2front function");
 			var self = this,
 				isTop = Number( $item.css( 'z-index' ) ) === this.itemZIndexMin + this.itemsCount - 1,
 				callback = isTop ? function() { self.isAnimating = false; } : function() { return false; },
@@ -381,7 +366,6 @@ jQuery.fn.reverse = [].reverse;
 
 			var self = this,
 				$items = self.$items,
-				//this condition is uselece
 				force = this.closed ? true : false;
 
 			if( $item ) {
@@ -389,14 +373,14 @@ jQuery.fn.reverse = [].reverse;
 			}
 
 			this._applyTransition( $items, { transform : 'none' }, function() {
-				
+
 				self.closed = true;
 				$items.off( self.transEndEventName );
 				self._resetTransition( $items );
 				setTimeout(function() {
-					
+
 					self._setOrigin( $items, 50, 50 );
-					
+
 					if( callback ) {
 						callback.call();
 					}
@@ -406,43 +390,14 @@ jQuery.fn.reverse = [].reverse;
 			}, force );
 
 		},
-		_closeItems : function() {
-
-			var self = this,
-				$items = self.$items,
-				//this condition is uselece
-				force = this.closed;
-
-
-			this._applyTransition( $items, { transform : 'none' }, function() {
-
-				self.closed = true;
-				$items.off( self.transEndEventName );
-				self._resetTransition( $items );
-				setTimeout(function() {
-
-					self._setOrigin( $items, 50, 50 );
-
-
-				}, 25);
-
-			}, force );
-
-		},
-		/*
-		_fan make the shape of a fan of the card originated
-		1- changes this.close to false therefor this.close mean that the
-			card are closed if we want to close the card easily by setting this.close = true
-		 */
 		_fan : function( settings ) {
 
 			var self = this;
 
 			this.closed = false;
 
-			//this pass of the sitting otherwise the default
 			settings = this._validateDefaultFanSettings( settings || {} );
-			
+
 			// set transform origins
 			// if minX and maxX are passed:
 			if( settings.origin.minX && settings.origin.maxX ) {
@@ -457,7 +412,7 @@ jQuery.fn.reverse = [].reverse;
 						originX = pos * ( max - min + stepOrigin ) / self.itemsCount + min;
 
 					if( settings.direction === 'left' ) {
-								
+
 						originX = max + min - originX;
 
 					}
@@ -465,7 +420,7 @@ jQuery.fn.reverse = [].reverse;
 					self._setOrigin( $( this ), originX, settings.origin.y );
 
 				} );
-			
+
 			}
 			else {
 
@@ -478,7 +433,7 @@ jQuery.fn.reverse = [].reverse;
 			var stepAngle = settings.range / ( this.itemsCount - 1 ),
 				stepTranslation = settings.translation / ( this.itemsCount - 1 ),
 				cnt = 0;
-			
+
 			this.$items.each( function( i ) {
 
 				var $el = $( this ),
@@ -488,17 +443,17 @@ jQuery.fn.reverse = [].reverse;
 					position = stepTranslation * ( self.itemsCount - pos - 1 );
 
 				if( settings.direction === 'left' ) {
-					
+
 					angle *= -1;
 					position *= -1;
 
 				}
 
 				if( settings.scatter ) {
-					
+
 					var extraAngle = Math.floor( Math.random() * stepAngle ),
 						extraPosition = Math.floor( Math.random() * stepTranslation ) ;
-					
+
 					// not for the first item..
 					if( pos !== self.itemsCount - 1 ) {
 
@@ -516,7 +471,7 @@ jQuery.fn.reverse = [].reverse;
 
 					++cnt;
 					$el.off( self.transEndEventName );
-					
+
 					if( cnt === self.itemsCount - 1 ) {
 						self.isAnimating = false;
 					}
@@ -529,7 +484,7 @@ jQuery.fn.reverse = [].reverse;
 		// adds new elements to the deck
 		_add : function( $elems ) {
 
-			var self = this, 
+			var self = this,
 				newElemsCount = $elems.length, cnt = 0;
 
 			$elems.css( 'opacity', 0 ).appendTo( this.$el );
@@ -537,10 +492,10 @@ jQuery.fn.reverse = [].reverse;
 			// reset
 			this.$items = this.$el.children( 'li' );
 			this.itemsCount = this.$items.length;
-			
+
 			// set z-indexes
 			this._setStack( $elems );
-			
+
 			// animate new items
 			$elems.css( 'transform', 'scale(1.8) translate(200px) rotate(15deg)' ).reverse().each( function( i ) {
 
@@ -550,7 +505,7 @@ jQuery.fn.reverse = [].reverse;
 				self._applyTransition( $el, { transform : 'none', opacity : 1 }, function() {
 
 					++cnt;
-					
+
 					$el.off( self.transEndEventName );
 					self._resetTransition( $el );
 
@@ -571,7 +526,7 @@ jQuery.fn.reverse = [].reverse;
 		_prepare : function( callback ) {
 
 			var self = this;
-			
+
 			if( !this.closed ) {
 
 				this._close( function() {
@@ -597,7 +552,7 @@ jQuery.fn.reverse = [].reverse;
 			}
 
 			this.isAnimating = true;
-			
+
 			this._prepare( function() {
 
 				action.call( self, args );
@@ -637,74 +592,71 @@ jQuery.fn.reverse = [].reverse;
 
 			this._dispatch( this._add, $elems );
 
-		},
-		isClosed:function () {
-			return this.closed;
 		}
 
 	};
-	
+
 	var logError = function( message ) {
 
 		if ( window.console ) {
 
 			window.console.error( message );
-		
+
 		}
 
 	};
-	
+
 	$.fn.baraja = function( options ) {
 
 		var instance = $.data( this, 'baraja' );
-		
+
 		if ( typeof options === 'string' ) {
-			
+
 			var args = Array.prototype.slice.call( arguments, 1 );
-			
+
 			this.each(function() {
-			
+
 				if ( !instance ) {
 
 					logError( "cannot call methods on baraja prior to initialization; " +
-					"attempted to call method '" + options + "'" );
+						"attempted to call method '" + options + "'" );
 					return;
-				
+
 				}
-				
+
 				if ( !$.isFunction( instance[options] ) || options.charAt(0) === "_" ) {
 
 					logError( "no such method '" + options + "' for baraja instance" );
 					return;
-				
+
 				}
-				
+
 				instance[ options ].apply( instance, args );
-			
+
 			});
-		
-		} 
+
+		}
 		else {
-		
+
 			this.each(function() {
-				
+
 				if ( instance ) {
 
 					instance._init();
-				
+
 				}
 				else {
 
 					instance = $.data( this, 'baraja', new $.Baraja( options, this ) );
-				
+
 				}
 
 			});
-		
+
 		}
-		
+
 		return instance;
-		
+
 	};
-	
+
 } )( jQuery, window );

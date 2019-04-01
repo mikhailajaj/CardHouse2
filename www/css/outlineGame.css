@@ -1,0 +1,160 @@
+#player2>li,#player3 >li{
+    transform: rotate(90deg);
+}
+html,budy{
+    height: 100%;
+    width: 100%;
+}
+.wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    flex-direction: row;
+}
+.wrapper > .card-container-row {
+    flex: 1 100%;
+    height: auto;
+    flex-flow: column wrap;
+    overflow: hidden;
+
+}
+.card-container{
+    display: flex;
+    flex-direction: column;
+}
+#player1{
+    height: 200px;
+    transform:translate(80px,20px);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+}
+#player2{
+    display: flex;
+    flex:1;
+    flex-direction: column;
+}
+#player3{
+    transform:translate(-20px,0px);
+    display: flex;
+    flex:1;
+    flex-direction: column;
+    margin: auto;
+}
+#player4{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 30px;
+}
+
+#player1 >li>img{
+    height: 40%;
+    width: 40%;
+}
+#player4 >li>img{
+    width: 100%;
+    height: 100%;
+}
+#player2 >li>img{
+    width:20px;
+    height: 30px;
+}#player3 >li>img{
+    width:20px;
+    height: 30px;
+}
+.table-mid{
+    display: block;
+    position: relative;
+    align-content: center;
+    width: 100%;
+    justify-content: center;
+
+}
+.table-mid> div >img{
+    max-width: 60px;
+    height:100%;
+    width:100%;
+}
+.table-mid>div{
+    max-width:80px ;
+    height: auto;
+    margin: 0;
+    padding: 0;
+}
+#card-played-3{
+    position: relative;
+    left: 50%;
+    top:-65%;
+}
+#card-played-2{
+    position: relative;
+    left:25%;
+}
+#card-played-1{
+    position: relative;
+    left:40%;
+    top:-20%;
+}
+#card-played-4{
+    position: relative;
+    left:40%;
+    top:20%;
+    opacity: 1110;
+}
+ul.baraja-container {
+    padding: 0;
+    list-style-type: none;
+}
+.card-container-row{
+    align-self: center;
+
+    list-style-type: none;
+}
+.card-container-col{
+    align-self: flex-start;
+}
+ul{
+    list-style-type: none;
+
+}
+ul.baraja-container li {
+    position: absolute;
+    cursor: pointer;
+    pointer-events: auto;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -ms-backface-visibility: hidden;
+    -o-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+.column-list{
+    width: 50px;
+    height: 200px;
+}
+/*
+this justify-content: space-evenly;
+can be modified as needed
+this css class responsible for the middle part of the application
+ */
+.mid-elements{
+    width: 100%;
+    height: 40%;
+    display: flex;
+    justify-content: space-between;
+}
+.table-mid{
+    justify-self: center;
+}
+/*
+#player4 > li{
+    width: 40px;
+    height: 60px;
+}
+.table-mid > li{
+    width:20px;
+    height: 30px;
+}
+*/
