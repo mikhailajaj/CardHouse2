@@ -1,0 +1,128 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="format-detection" content="telephone=no">
+
+
+    <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1" />    <meta name="msapplication-tap-highlight" content="no">
+
+
+    <link rel="stylesheet" type="text/css" href="../css/index.css">
+    <link rel="stylesheet" type="text/css" href="../css/baraja.css" />
+
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-PDle/QlgIONtM1aqA2Qemk5gPOE7wFq8+Em+G/hmo5Iq0CCmYZLv3fVRDJ4MMwEA" crossorigin="anonymous">
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/js/bootstrap.min.js" integrity="sha384-7aThvCh9TypR7fIc2HV4O/nFMVCBwyIUKL8XCtKE+8xgCgl/PQGuFsvShjr74PBp" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+    <script type="text/javascript" src="../js/modernizr.custom.79639.js"></script>
+    <style>
+        html,budy{
+            height: 100%;
+            width: 100%;
+        }
+        .wrapper {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-flow: row wrap;
+
+        }
+        .wrapper > .card-container-row {
+            flex: 1 100%;
+            height: auto;
+            flex-flow: column;
+        }
+        .card-container{
+            display: flex;
+            flex-direction: column;
+        }
+        #player1{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+
+        }
+        #player2{
+            display: flex;
+            flex:1;
+            flex-direction: column;
+        }
+        #player3{
+            display: flex;
+            flex:1;
+            flex-direction: column;
+            margin: auto;
+        }
+        #player4{
+            display: flex;
+
+            flex-direction: row;
+            justify-content: center;
+
+        }
+        /*
+        this justify-content: space-evenly;
+        can be modified as needed
+        this css class responsible for the middle part of the application
+         */
+        .mid-elements{
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+        }
+        .table-mid{
+            justify-self: center;
+        }
+
+    </style>
+</head>
+<body>
+<div class="wrapper">
+    <div class="card-container-row">
+        <div id="player1">
+            <div>div 1 1</div>
+            <div>div 1 2</div>
+            <div>div 1 3</div>
+        </div>
+    </div>
+    <div class="mid-elements">
+        <div class="card-container">
+            <div id="player2">
+
+                <div>div 2 1</div>
+                <div>div 2 2</div>
+                <div>div 2 3</div>
+            </div>
+        </div>
+        <div class="table-mid">
+            this is mid
+        </div>
+        <div class="card-container">
+            <div id="player3">
+
+                <div>div 3 1</div>
+                <div>div 3 2</div>
+                <div>div 3 3</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-container-row">
+        <div id="player4">
+
+            <div>div 4 1</div>
+            <div>div 4 2</div>
+            <div>div 4 3</div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

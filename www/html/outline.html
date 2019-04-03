@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="format-detection" content="telephone=no">
+
+
+    <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1" />    <meta name="msapplication-tap-highlight" content="no">
+
+
+    <link rel="stylesheet" type="text/css" href="../css/index.css">
+    <link rel="stylesheet" type="text/css" href="../css/baraja.css" />
+
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-PDle/QlgIONtM1aqA2Qemk5gPOE7wFq8+Em+G/hmo5Iq0CCmYZLv3fVRDJ4MMwEA" crossorigin="anonymous">
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/js/bootstrap.min.js" integrity="sha384-7aThvCh9TypR7fIc2HV4O/nFMVCBwyIUKL8XCtKE+8xgCgl/PQGuFsvShjr74PBp" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+    <script type="text/javascript" src="../js/modernizr.custom.79639.js"></script>
+
+</head>
+
+<style>
+
+    html, body {
+        height: 100%;
+    }
+    /*
+    image container is applied to all cards container
+     */
+    div.image_container{
+        width: 100%;
+        height: 70px;
+    }
+    div.image_container img{
+        width: 50px;
+        height:70px;
+    }
+    /*
+    card container is applied to rest of the cards
+     */
+    div.card_container{
+        width: 100%;
+        overflow: hidden;
+    }
+    div.card_container img{
+        width: 50px;
+        height:70px;
+    }
+    /*
+    player one should be a part from the wrapper container
+     */
+    #player_1_card{
+        align-content: flex-end;
+    }
+    #player_1_card>li>img{
+        flex: 2 0 0;
+        height: 98px;
+        width: 70px;
+    }
+    ul.baraja-container {
+        width: 100%;
+        height: 70px;
+        padding: 0;
+        list-style-type: none;
+    }
+
+    ul.baraja-container li {
+        top:80%;
+        left:50%;
+        position: absolute;
+        cursor: pointer;
+        background: #fff;
+        pointer-events: auto;
+        -webkit-backface-visibility: hidden;
+        -moz-backface-visibility: hidden;
+        -ms-backface-visibility: hidden;
+        -o-backface-visibility: hidden;
+        backface-visibility: hidden;
+    }
+    .wrapper {
+        display: flex;
+        flex-flow: row wrap;
+        flex-direction: row;
+    }
+
+
+
+</style>
+
+
+
+<body>
+<main class="wrapper">
+    <div class="image_container">
+        <ul id="player_1_card" class="baraja-container">
+            <li><img src="../img/cards/1.png"/></li>
+            <li><img src="../img/cards/2.png"/></li>
+            <li><img src="../img/cards/3.png"/></li>
+            <li><img src="../img/cards/4.png"/></li>
+            <li><img src="../img/cards/5.png"/></li>
+            <li><img src="../img/cards/6.png"/></li>
+            <li><img src="../img/cards/7.png"/></li>
+            <li><img src="../img/cards/8.png"/></li>
+            <li><img src="../img/cards/9.png"/></li>
+            <li><img src="../img/cards/10.png"/></li>
+            <li><img src="../img/cards/11.png"/></li>
+            <li><img src="../img/cards/12.png"/></li>
+            <li><img src="../img/cards/13.png"/></li>
+        </ul>
+    </div>
+    <div class="image_container">
+        <div id="player_2_card" class="card_container">
+            <img src="../img/cards/1.png"/>
+            <img src="../img/cards/2.png"/>
+            <img src="../img/cards/3.png"/>
+            <img src="../img/cards/4.png"/>
+            <img src="../img/cards/5.png"/>
+            <img src="../img/cards/6.png"/>
+            <img src="../img/cards/7.png"/>
+            <img src="../img/cards/8.png"/>
+            <img src="../img/cards/9.png"/>
+            <img src="../img/cards/10.png"/>
+            <img src="../img/cards/11.png"/>
+            <img src="../img/cards/12.png"/>
+            <img src="../img/cards/13.png"/>
+        </div>
+    </div>
+    <div id="card-holder" class="card_container">
+
+    </div>
+    <div class="image_container">
+        <div id="player_3_card" class="card_container">
+            <img src="../img/cards/1.png"/>
+            <img src="../img/cards/2.png"/>
+            <img src="../img/cards/3.png"/>
+            <img src="../img/cards/4.png"/>
+            <img src="../img/cards/5.png"/>
+            <img src="../img/cards/6.png"/>
+            <img src="../img/cards/7.png"/>
+            <img src="../img/cards/8.png"/>
+            <img src="../img/cards/9.png"/>
+            <img src="../img/cards/10.png"/>
+            <img src="../img/cards/11.png"/>
+            <img src="../img/cards/12.png"/>
+            <img src="../img/cards/13.png"/>
+        </div>
+    </div>
+    <div class="image_container">
+        <div id="player_4_card" class="baraja-container">
+            <img src="../img/cards/1.png"/>
+            <img src="../img/cards/2.png"/>
+            <img src="../img/cards/3.png"/>
+            <img src="../img/cards/4.png"/>
+            <img src="../img/cards/5.png"/>
+            <img src="../img/cards/6.png"/>
+            <img src="../img/cards/7.png"/>
+            <img src="../img/cards/8.png"/>
+            <img src="../img/cards/9.png"/>
+            <img src="../img/cards/10.png"/>
+            <img src="../img/cards/11.png"/>
+            <img src="../img/cards/12.png"/>
+            <img src="../img/cards/13.png"/>
+        </div>
+    </div>
+</main>
+
+
+<script type="text/javascript" src="../js/jquery.baraja.js"></script>
+<script>
+    window.addEventListener("load",function (ev) {
+        $(function () {
+            var $el =$("#player_1_card");
+            var player1 = $el.baraja();
+
+        });
+    });
+
+</script>
+
+
+
+
+</body>
+</html>
